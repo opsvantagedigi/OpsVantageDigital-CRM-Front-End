@@ -37,6 +37,15 @@ class EmailService:
                         from_name: Optional[str] = None) -> Dict[str, Any]:
         """Send a single email using SendGrid"""
         try:
+            if not self.sg:
+                logger.warning(f"SendGrid not configured. Cannot send email to {to_email}")
+                return {
+                    "success": False,
+                    "error": "SendGrid not configured",
+                    "to_email": to_email,
+                    "timestamp": datetime.utcnow()
+                }
+                
             sender_email = from_email or self.from_email
             sender_name = from_name or self.from_name
             

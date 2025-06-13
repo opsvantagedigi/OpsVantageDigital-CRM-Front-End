@@ -354,14 +354,16 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Contact Management APIs"
-    - "Interaction Tracking APIs"
-    - "Email Template APIs"
-    - "Campaign Management APIs"
-    - "Email Sequence APIs"
-    - "Analytics APIs"
-    - "System Initialization APIs"
-    - "SendGrid Integration"
+    - "Layout & Navigation"
+    - "Dashboard"
+    - "Contact Management UI"
+    - "Contact Detail View"
+    - "Contact Form"
+    - "Campaign Management UI"
+    - "Campaign Creation"
+    - "Email Templates UI"
+    - "Email Sequences UI"
+    - "Analytics Dashboard"
   stuck_tasks: []
   test_all: true
   test_priority: "high_first"

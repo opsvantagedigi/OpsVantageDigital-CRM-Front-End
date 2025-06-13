@@ -1,12 +1,18 @@
+import sys
+import os
+from pathlib import Path
+
+# Add the backend directory to Python path
+ROOT_DIR = Path(__file__).parent
+sys.path.append(str(ROOT_DIR))
+
 from fastapi import FastAPI, APIRouter, HTTPException, Query, BackgroundTasks
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
-import os
 import logging
 import asyncio
-from pathlib import Path
 from typing import List, Optional
 from datetime import datetime
 

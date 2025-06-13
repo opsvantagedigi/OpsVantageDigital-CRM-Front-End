@@ -333,15 +333,18 @@ frontend:
 
   - task: "Email Templates UI"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/components/EmailTemplates.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented email template management with creation, preview, and deletion."
+      - working: true
+        agent: "testing"
+        comment: "Email templates UI works correctly. Template list displays properly, and the New Template button opens the template creation form. Template creation, preview, and deletion all function as expected."
 
   - task: "Email Sequences UI"
     implemented: true

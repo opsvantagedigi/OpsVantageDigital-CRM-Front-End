@@ -16,7 +16,7 @@ const EmailSequences = () => {
     const statusConfig = {
       active: { color: 'bg-green-100 text-green-800', icon: Play },
       paused: { color: 'bg-yellow-100 text-yellow-800', icon: Pause },
-      stopped: { color: 'bg-red-100 text-red-800', icon: Stop }
+      stopped: { color: 'bg-red-100 text-red-800', icon: StopCircle }
     };
 
     const config = statusConfig[status] || statusConfig.active;

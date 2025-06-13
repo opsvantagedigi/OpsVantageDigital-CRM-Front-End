@@ -1,53 +1,69 @@
-import { useEffect } from "react";
-import "./App.css";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { Toaster } from "react-hot-toast";
+import "./App.css";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Import components
+import Dashboard from "./components/Dashboard";
+import ContactList from "./components/ContactList";
+import ContactDetail from "./components/ContactDetail";
+import CampaignList from "./components/CampaignList";
+import CampaignCreate from "./components/CampaignCreate";
+import EmailTemplates from "./components/EmailTemplates";
+import EmailSequences from "./components/EmailSequences";
+import Analytics from "./components/Analytics";
+import Layout from "./components/Layout";
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+      staleTime: 5 * 60 * 1000, // 5 minutes
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
+        <div className="App">
+          <Toaster 
+            position="top-right"
+            toastOptions={{
+              duration: 4000,
+              style: {
+                background: '#363636',
+                color: '#fff',
+              },
+              success: {
+                duration: 3000,
+                theme: {
+                  primary: 'green',
+                  secondary: 'black',
+                },
+              },
+            }}
+          />
+          
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="contacts" element={<ContactList />} />
+              <Route path="contacts/:id" element={<ContactDetail />} />
+              <Route path="campaigns" element={<CampaignList />} />
+              <Route path="campaigns/create" element={<CampaignCreate />} />
+              <Route path="templates" element={<EmailTemplates />} />
+              <Route path="sequences" element={<EmailSequences />} />
+              <Route path="analytics" element={<Analytics />} />
+            </Route>
+          </Routes>
+        </div>
       </BrowserRouter>
-    </div>
+    </QueryClientProvider>
   );
 }
 

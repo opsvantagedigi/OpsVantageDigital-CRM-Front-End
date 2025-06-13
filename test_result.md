@@ -373,6 +373,8 @@ agent_communication:
     message: "I've implemented all the backend APIs for the CRM & Email Marketing system. Please test all the backend functionality to ensure it's working correctly."
   - agent: "testing"
     message: "I've completed comprehensive testing of all backend APIs. All core functionality is working correctly. There are two minor issues: 1) The /contacts/search endpoint has a MongoDB query issue, but the regular /contacts?search= parameter works fine as an alternative. 2) Email sending via SendGrid fails with 403 Forbidden errors, which is expected with a placeholder API key in a test environment. All other functionality works as expected, including contact management, lead scoring, interaction tracking, campaign management, email sequences, and analytics."
+  - agent: "main"
+    message: "I've implemented all the frontend components for the CRM & Email Marketing system. Please test all the frontend functionality to ensure it's working correctly and integrating properly with the backend APIs."
 
 #==========================================================================
 # TESTING PROTOCOL FOR OpsVantage CRM & Email Marketing System

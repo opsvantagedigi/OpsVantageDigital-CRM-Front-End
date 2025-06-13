@@ -12,7 +12,8 @@ import {
   Calendar,
   MessageSquare,
   Plus,
-  MoreVertical
+  MoreVertical,
+  X
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { crmAPI } from '../api';

@@ -348,15 +348,18 @@ frontend:
 
   - task: "Email Sequences UI"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/components/EmailSequences.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented email sequence management with multi-step email configuration."
+      - working: true
+        agent: "testing"
+        comment: "Email sequences UI works correctly. Sequence list displays properly, and the Create Sequence button opens the sequence creation form. Sequence creation with multiple email steps and sequence detail view all function as expected."
 
   - task: "Analytics Dashboard"
     implemented: true

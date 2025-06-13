@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
-import { Plus, Play, Pause, Stop, Edit, Trash2, Eye, Zap, Users } from 'lucide-react';
+import { Plus, Play, Pause, StopCircle, Edit, Trash2, Eye, Zap, Users } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { crmAPI } from '../api';
 

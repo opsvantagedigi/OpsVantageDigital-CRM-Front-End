@@ -6,6 +6,11 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv(Path(__file__).parent / '.env')
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -15,8 +20,11 @@ class EmailService:
     def __init__(self):
         self.api_key = os.environ.get('SENDGRID_API_KEY')
         if not self.api_key:
-            raise ValueError("SENDGRID_API_KEY environment variable is required")
-        self.sg = SendGridAPIClient(api_key=self.api_key)
+            logger.warning("SENDGRID_API_KEY environment variable is not set. Email functionality will be limited.")
+            self.sg = None
+        else:
+            self.sg = SendGridAPIClient(api_key=self.api_key)
+        
         self.from_email = "noreply@opsvantage.com"  # OpsVantage default sender
         self.from_name = "OpsVantage Digital"
         
